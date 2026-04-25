@@ -1,6 +1,6 @@
 ---
 name: systematic-debugging
-description: Debug bugs, failing tests, deploy failures, and unexpected behavior.
+description: "Debug bugs, failing tests, deploy failures, and unexpected behavior."
 ---
 
 # Systematic Debugging

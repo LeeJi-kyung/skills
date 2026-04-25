@@ -1,6 +1,6 @@
 ---
 name: deployment
-description: Deploy readiness for Vercel/Railway envs, smoke checks, rollback.
+description: "Deploy readiness for Vercel/Railway envs, smoke checks, rollback."
 ---
 
 # Deployment

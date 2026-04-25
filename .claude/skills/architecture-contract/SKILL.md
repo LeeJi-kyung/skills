@@ -1,6 +1,6 @@
 ---
 name: architecture-contract
-description: Pre-parallel contract for API, data, env, and frontend/backend ownership.
+description: "Pre-parallel contract for API, data, env, and frontend/backend ownership."
 ---
 
 # Architecture Contract

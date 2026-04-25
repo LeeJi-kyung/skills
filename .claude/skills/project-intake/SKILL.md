@@ -1,6 +1,6 @@
 ---
 name: project-intake
-description: Topic kickoff: product promise, target user, demo path, first build slices.
+description: "Topic kickoff: product promise, target user, demo path, first build slices."
 ---
 
 # Project Intake

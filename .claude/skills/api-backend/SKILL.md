@@ -1,6 +1,6 @@
 ---
 name: api-backend
-description: FastAPI backend work: routes, schemas, Supabase, CORS, envelopes.
+description: "FastAPI backend work: routes, schemas, Supabase, CORS, envelopes."
 ---
 
 # API Backend

@@ -1,6 +1,6 @@
 ---
 name: demo-readiness
-description: Final-hour demo prep: flow, seed data, fallback materials, risk burn-down.
+description: "Final-hour demo prep: flow, seed data, fallback materials, risk burn-down."
 ---
 
 # Demo Readiness

@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Pre-merge review for blockers: contract drift, secrets, demo risk.
+description: "Pre-merge review for blockers: contract drift, secrets, demo risk."
 ---
 
 # Code Review

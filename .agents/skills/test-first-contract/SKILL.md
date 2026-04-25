@@ -1,6 +1,6 @@
 ---
 name: test-first-contract
-description: Contract tests before frontend/backend parallel feature work.
+description: "Contract tests before frontend/backend parallel feature work."
 ---
 
 # Test-First Contract

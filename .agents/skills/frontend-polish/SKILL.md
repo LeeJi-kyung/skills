@@ -1,6 +1,6 @@
 ---
 name: frontend-polish
-description: Next.js UI polish for responsive, shadcn/Tailwind, judge-facing demos.
+description: "Next.js UI polish for responsive, shadcn/Tailwind, judge-facing demos."
 ---
 
 # Frontend Polish

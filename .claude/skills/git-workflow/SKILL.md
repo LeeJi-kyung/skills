@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: Branch, commit, PR, merge, conflict, and merge-freeze workflow.
+description: "Branch, commit, PR, merge, conflict, and merge-freeze workflow."
 ---
 
 # Git Workflow
