@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -u
+
+API_URL="${API_URL:-${NEXT_PUBLIC_API_URL:-http://localhost:8000}}"
+FRONTEND_URL="${FRONTEND_URL:-http://localhost:3000}"
+status=0
+
+echo "== Backend health =="
+if command -v curl >/dev/null 2>&1; then
+  curl -fsS "$API_URL/health" || status=1
+else
+  echo "missing curl"
+  status=1
+fi
+
+echo
+echo "== Frontend reachability =="
+if command -v curl >/dev/null 2>&1; then
+  curl -fsSI "$FRONTEND_URL" >/dev/null || echo "warn: frontend not reachable at $FRONTEND_URL"
+fi
+
+exit "$status"
+

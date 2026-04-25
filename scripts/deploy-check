@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -u
+
+status=0
+
+echo "== Required deploy variables =="
+for name in NEXT_PUBLIC_API_URL CORS_ORIGINS; do
+  if [ -z "${!name:-}" ]; then
+    echo "missing env: $name"
+    status=1
+  else
+    echo "ok: $name"
+  fi
+done
+
+echo "== Optional Supabase variables =="
+for name in NEXT_PUBLIC_SUPABASE_URL NEXT_PUBLIC_SUPABASE_ANON_KEY DATABASE_URL SUPABASE_URL SUPABASE_SERVICE_KEY; do
+  if [ -z "${!name:-}" ]; then
+    echo "optional missing: $name"
+  else
+    echo "ok: $name"
+  fi
+done
+
+if [ -f frontend/package.json ]; then
+  (cd frontend && pnpm build) || status=1
+else
+  echo "skip: frontend not scaffolded"
+fi
+
+if [ -f backend/pyproject.toml ]; then
+  (cd backend && uv run python -c "from main import app; print('backend import ok')") || status=1
+else
+  echo "skip: backend not scaffolded"
+fi
+
+exit "$status"
+

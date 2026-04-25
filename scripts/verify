@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -u
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT"
+
+status=0
+
+echo "== Harness docs =="
+for path in CLAUDE.md AGENTS.md ARCHITECTURE.md docs/harness/OPERATING_MODEL.md docs/harness/QUALITY_GATES.md; do
+  if [ ! -f "$path" ]; then
+    echo "missing: $path"
+    status=1
+  else
+    echo "ok: $path"
+  fi
+done
+
+echo "== Frontend =="
+if [ -f frontend/package.json ]; then
+  (cd frontend && pnpm lint) || status=1
+  (cd frontend && pnpm test --run) || true
+  (cd frontend && pnpm build) || status=1
+else
+  echo "skip: frontend/package.json not scaffolded"
+fi
+
+echo "== Backend =="
+if [ -f backend/pyproject.toml ]; then
+  (cd backend && uv run ruff check .) || status=1
+  (cd backend && uv run pytest -q) || status=1
+else
+  echo "skip: backend/pyproject.toml not scaffolded"
+fi
+
+exit "$status"
+

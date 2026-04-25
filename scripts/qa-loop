@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -u
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT"
+
+MAX_ITERATIONS="${MAX_ITERATIONS:-3}"
+last_failure=""
+
+for i in $(seq 1 "$MAX_ITERATIONS"); do
+  echo "== QA loop iteration $i/$MAX_ITERATIONS =="
+  output="$(scripts/verify 2>&1)"
+  code=$?
+  echo "$output"
+
+  if [ "$code" -eq 0 ]; then
+    echo "verify passed"
+    scripts/smoke
+    exit $?
+  fi
+
+  failure="$(printf "%s\n" "$output" | tail -n 20)"
+  if [ "$failure" = "$last_failure" ]; then
+    echo "same failure repeated; escalate to human"
+    exit 1
+  fi
+  last_failure="$failure"
+done
+
+echo "loop limit reached; escalate to human"
+exit 1
+
