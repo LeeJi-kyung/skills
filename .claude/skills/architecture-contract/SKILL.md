@@ -1,6 +1,6 @@
 ---
 name: architecture-contract
-description: Use before parallel development and whenever API, env, data, or FE/BE responsibilities change.
+description: Pre-parallel contract for API, data, env, and frontend/backend ownership.
 ---
 
 # Architecture Contract
@@ -33,4 +33,3 @@ description: Use before parallel development and whenever API, env, data, or FE/
 - Do not resolve contract disagreements in code first.
 - Do not add optional fields without documenting fallback UI.
 - Do not let deploy URLs live only in chat.
-

@@ -12,7 +12,7 @@ Then inspect:
 - `.agents/skills/`
 
 ## Skills
-Canonical skills live in `.claude/skills/`. Codex-compatible access is exposed through `.agents/skills/`.
+Codex should load `.agents/skills/` only. Claude Code should load `.claude/skills/` only.
 
 Do not bulk-install community skill packs during the hackathon. Read third-party skills as references only, then copy the useful pattern into this local harness after review.
 
@@ -27,4 +27,3 @@ scripts/qa-loop
 ```
 
 If a command cannot run because the app has not been scaffolded yet, report that as "not scaffolded" rather than inventing a pass.
-

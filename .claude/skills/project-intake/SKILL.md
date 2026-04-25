@@ -1,6 +1,6 @@
 ---
 name: project-intake
-description: Use immediately after the topic is chosen to lock the product promise, user, demo path, and first build slices.
+description: Topic kickoff: product promise, target user, demo path, first build slices.
 ---
 
 # Project Intake
@@ -35,4 +35,3 @@ Turn the demo path into:
 - Do not start coding before the first API contract is written.
 - Do not choose a topic that needs unavailable private data.
 - Do not depend on integrations the team cannot authenticate quickly.
-

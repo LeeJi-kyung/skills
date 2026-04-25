@@ -1,6 +1,6 @@
 ---
 name: api-backend
-description: Use for FastAPI routes, Pydantic schemas, Supabase access, CORS, health checks, and backend error envelopes.
+description: FastAPI backend work: routes, schemas, Supabase, CORS, envelopes.
 ---
 
 # API Backend
@@ -44,4 +44,3 @@ cd backend
 uv run ruff check .
 uv run pytest -q
 ```
-

@@ -1,6 +1,6 @@
 ---
 name: systematic-debugging
-description: Use for bugs, test failures, deploy failures, or unexpected behavior before proposing fixes.
+description: Debug bugs, failing tests, deploy failures, and unexpected behavior.
 ---
 
 # Systematic Debugging
@@ -41,4 +41,3 @@ scripts/verify
 scripts/smoke
 scripts/deploy-check
 ```
-

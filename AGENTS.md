@@ -13,6 +13,7 @@ Codex project map for an 8-hour Vibe Coding Hackathon.
 Humans steer. Agents execute inside explicit contracts.
 
 Before parallel work starts, fill `ARCHITECTURE.md`. If the contract changes, update it in the same PR.
+Use skills only when relevant. Start with `project-intake` and `architecture-contract` before parallel work.
 
 ## Where To Look
 - `ARCHITECTURE.md`: API, data, env, frontend/backend boundaries
@@ -51,4 +52,3 @@ scripts/qa-loop
 - New env vars must be added to `.env.example` or `ARCHITECTURE.md`.
 - Destructive commands and file deletion require explicit human approval.
 - Demo path beats feature count.
-

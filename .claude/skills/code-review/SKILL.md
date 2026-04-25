@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Use before merge or after substantial changes. Focus on blocking issues, security, contract drift, and demo risk.
+description: Pre-merge review for blockers: contract drift, secrets, demo risk.
 ---
 
 # Code Review
@@ -44,4 +44,3 @@ description: Use before merge or after substantial changes. Focus on blocking is
 - Do not request broad rewrites during merge freeze.
 - Do not block on style if the demo path is safe.
 - Do not approve if contract drift is unresolved.
-

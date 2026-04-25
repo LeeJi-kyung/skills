@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: Use for branches, commits, PRs, merges, conflict handling, and merge-freeze decisions.
+description: Branch, commit, PR, merge, conflict, and merge-freeze workflow.
 ---
 
 # Git Workflow
@@ -55,4 +55,3 @@ At 6:30, only merge deploy fixes, demo path fixes, and severe visual bugs.
 scripts/verify
 scripts/smoke
 ```
-

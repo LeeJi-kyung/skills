@@ -1,6 +1,6 @@
 ---
 name: frontend-polish
-description: Use for Next.js UI, shadcn/Tailwind implementation, visual polish, responsiveness, and judge-facing demo quality.
+description: Next.js UI polish for responsive, shadcn/Tailwind, judge-facing demos.
 ---
 
 # Frontend Polish
@@ -37,4 +37,3 @@ cd frontend
 pnpm lint
 pnpm build
 ```
-

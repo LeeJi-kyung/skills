@@ -1,6 +1,6 @@
 ---
 name: demo-readiness
-description: Use in the final hour to prepare presentation flow, seed data, fallback materials, and risk reduction.
+description: Final-hour demo prep: flow, seed data, fallback materials, risk burn-down.
 ---
 
 # Demo Readiness
@@ -35,4 +35,3 @@ description: Use in the final hour to prepare presentation flow, seed data, fall
 ```bash
 scripts/smoke
 ```
-

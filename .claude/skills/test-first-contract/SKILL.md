@@ -1,6 +1,6 @@
 ---
 name: test-first-contract
-description: Use before feature implementation to define contract-level tests for frontend/backend parallel work.
+description: Contract tests before frontend/backend parallel feature work.
 ---
 
 # Test-First Contract
@@ -40,4 +40,3 @@ Hackathon TDD is contract-first, not exhaustive test-first. Define the shape tha
 scripts/verify
 scripts/smoke
 ```
-

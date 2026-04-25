@@ -1,6 +1,6 @@
 ---
 name: deployment
-description: Use for Vercel frontend deploys, Railway backend deploys, env checks, smoke tests, and rollback decisions.
+description: Deploy readiness for Vercel/Railway envs, smoke checks, rollback.
 ---
 
 # Deployment
@@ -49,4 +49,3 @@ API_URL=https://your-api.example.com FRONTEND_URL=https://your-app.vercel.app sc
 - Vercel: use the previous successful deployment.
 - Railway: revert to the last known good commit and redeploy.
 - If deploy is unstable after 7:15, demo locally with seeded data.
-
