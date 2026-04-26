@@ -1,11 +1,22 @@
 # /intake
 
-Use when the hackathon topic is chosen.
+Use to reset scope for the ThiSpot MVP.
 
-Run the `project-intake` skill and produce:
-- product name
-- target user
-- one-line promise
-- demo happy path
-- first API/data contract updates for `ARCHITECTURE.md`
+Read:
 
+- `skills/.agents/skills/project-intake/SKILL.md`
+
+Keep:
+
+- VisionMissionAgent
+- ContentGenerationAgent
+- character-based iOS walk flow
+- Python harness backend
+
+Cut:
+
+- real OAuth
+- production DB
+- real social feed
+- complex segmentation
+- full generative video model

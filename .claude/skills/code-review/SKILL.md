@@ -1,46 +1,28 @@
----
-name: code-review
-description: "Pre-merge review for blockers: contract drift, secrets, demo risk."
----
+# ThiSpot Integration Review Skill
 
-# Code Review
+Use this skill before merging work from cmux lanes.
 
-## Review Order
-1. Read `ARCHITECTURE.md`.
-2. Inspect the diff.
-3. Check contract, security, env, tests, and demo path.
-4. Separate blocking issues from recommendations.
+## Review Priorities
 
-## Blocking Issues
-- API response does not use `{ data, error, status }`.
-- Frontend calls an undocumented route or field.
-- Backend accepts unvalidated input.
-- Secret appears in code, docs, logs, or screenshots.
-- Main demo path is broken.
-- Required env var is undocumented.
+1. Contract compatibility with `skills/README.md`.
+2. Demo path cannot crash.
+3. Every backend agent route returns `agent_trace`.
+4. iOS has mock fallback for backend failure.
+5. Vision mission score is stable on the demo photo.
+6. Content generation failure still returns an image report.
+7. Character asset loads on the first screen and report screen.
 
-## Recommendations
-- Naming, small refactors, minor visual polish.
-- Test expansion outside the demo path.
-- Performance improvements that do not affect demo safety.
+## Common Failure Modes
 
-## Output
-```markdown
-## Review
+- iOS expects camelCase but backend returns snake_case.
+- Multipart field names differ.
+- Report URL is relative when iOS expects absolute.
+- Backend saves uploads outside writable path.
+- GPS permission blocks demo.
+- Camera permission blocks demo.
+- MP4 generation takes too long.
+- Character/report assets are missing from static serving.
 
-### Blocking
-- [file:line] issue and required fix
+## Required Fix Pattern
 
-### Recommendations
-- [file:line] improvement
-
-### Passed
-- Contract:
-- Security:
-- Demo path:
-```
-
-## Do Not
-- Do not request broad rewrites during merge freeze.
-- Do not block on style if the demo path is safe.
-- Do not approve if contract drift is unresolved.
+Prefer compatibility adapters over broad refactors. This is a hackathon MVP; preserve the demo path first.

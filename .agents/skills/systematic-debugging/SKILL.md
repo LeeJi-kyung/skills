@@ -1,43 +1,72 @@
----
-name: systematic-debugging
-description: "Debug bugs, failing tests, deploy failures, and unexpected behavior."
----
+# ThiSpot VisionMissionAgent Skill
 
-# Systematic Debugging
+Use this skill for the photo mission-proof agent.
 
-## When
-- A command fails.
-- UI/API behavior differs from `ARCHITECTURE.md`.
-- Deploy or smoke checks fail.
-- An agent has tried more than once without progress.
+## Goal
+
+Given a target rainbow color and a user photo, verify whether the photo proves today's color mission and explain what object was found.
+
+## Input
+
+```text
+image file
+target_color: red | orange | yellow | green | blue | indigo | violet
+lat/lng optional
+```
 
 ## Output
-- Symptom
-- Reproduction command or steps
-- Root-cause hypothesis
-- Minimal fix
-- Verification command
 
-## Workflow
-1. Read the full error, not only the last line.
-2. Reproduce with the smallest command or click path.
-3. Identify the boundary: frontend, backend, data, env, deploy, or contract.
-4. Validate the hypothesis before editing broadly.
-5. Make the smallest fix.
-6. Re-run the exact failing check.
-7. Add or update a test, smoke check, or contract note when useful.
+```json
+{
+  "detected_color": "blue",
+  "match_score": 0.87,
+  "is_matched": true,
+  "object_label": "sky",
+  "feedback": "Blue sky detected. This fits today's mission."
+}
+```
 
-## Do Not
-- Do not rewrite unrelated code.
-- Do not guess API shapes.
-- Do not hide errors with broad `try/catch`.
-- Do not change env names without updating `ARCHITECTURE.md`.
+## Algorithm
 
-## Verify
-Run the smallest relevant command:
+1. Load image with Pillow.
+2. Resize for speed.
+3. Sample pixels or compute palette.
+4. Convert RGB to HSV.
+5. Compare target hue range against pixel distribution.
+6. Compute score from target-color pixel ratio and hue distance.
+7. Return simple object label from heuristic, optional vision model, or deterministic fallback.
 
-```bash
-scripts/verify
-scripts/smoke
-scripts/deploy-check
+## Target Hue Ranges
+
+```text
+red:    345-360 or 0-15
+orange: 16-40
+yellow: 41-65
+green:  66-165
+blue:   190-250
+indigo: 251-275
+violet: 276-320
+```
+
+Ignore low-saturation and very dark pixels when possible.
+
+## Match Rule
+
+```text
+score >= 0.70 -> is_matched true
+score <  0.70 -> is_matched false
+```
+
+## Demo Fallback
+
+If the analyzer fails, return:
+
+```json
+{
+  "detected_color": "blue",
+  "match_score": 0.87,
+  "is_matched": true,
+  "object_label": "sky",
+  "feedback": "Blue sky detected with demo fallback."
+}
 ```

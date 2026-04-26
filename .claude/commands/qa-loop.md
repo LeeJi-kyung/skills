@@ -1,10 +1,8 @@
 # /qa-loop
 
-Run:
+Use during integration.
 
-```bash
-scripts/qa-loop
-```
+Run the checks in:
 
-Stop after the loop limit. Escalate if the same failure appears twice.
-
+- `skills/.agents/skills/test-first-contract/SKILL.md`
+- `skills/.agents/skills/code-review/SKILL.md`

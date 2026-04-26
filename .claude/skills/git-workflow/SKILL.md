@@ -1,57 +1,58 @@
----
-name: git-workflow
-description: "Branch, commit, PR, merge, conflict, and merge-freeze workflow."
----
+# ThiSpot cmux Multi-Agent Workflow Skill
 
-# Git Workflow
+Use this skill to coordinate parallel work.
 
-## Branch Ownership
-- `main`: deployable only, no direct push.
-- `feat/frontend`: frontend owner.
-- `feat/backend`: backend owner.
-- `feat/integration`: integration/demo owner.
-- `fix/<issue>`: short urgent fixes.
+## Lanes
 
-## PR Contract
-Every PR must state:
-- What changed.
-- Whether `ARCHITECTURE.md` changed.
-- Which verification command ran.
-- Known demo risk.
+```text
+Lane A: iOS Client
+Skill: frontend-polish
+Owns: SwiftUI flow, character UI, walk tracking, camera, API client, result/report UI
 
-## Commit Messages
-Use:
-- `feat: ...`
-- `fix: ...`
-- `chore: ...`
-- `docs: ...`
-- `test: ...`
-- `refactor: ...`
+Lane B: Vision Mission Agent
+Skill: systematic-debugging
+Owns: VisionMissionAgent, image analyzer, object feedback, /api/analyze-photo vision output
 
-## Merge Rules
-Blocking:
-- Build failure.
-- Smoke path failure.
-- API contract mismatch.
-- Secret leak.
-- Unreviewed env var change.
+Lane C: Harness + Content
+Skill: api-backend + deployment
+Owns: FastAPI app, orchestrator, recommend color, discovery, reward, content generation
 
-Non-blocking:
-- Minor naming preference.
-- Non-demo visual polish.
-- Refactor suggestion without correctness risk.
+Lane D: Integrator
+Skill: demo-readiness + code-review + test-first-contract
+Owns: contract checks, fallback fixtures, demo rehearsal
+```
 
-## Merge Freeze
-At 6:30, only merge deploy fixes, demo path fixes, and severe visual bugs.
+## cmux Prompts
 
-## Conflict Protocol
-1. Read `ARCHITECTURE.md`.
-2. Preserve both owners' intended behavior.
-3. If the contract is stale, update the contract first.
-4. Prefer the smaller patch that restores the demo path.
+```text
+@ios Read skills/README.md and skills/.agents/skills/frontend-polish/SKILL.md. Build the ThiSpot SwiftUI flow using mock API responses first, then wire backend routes.
 
-## Verify
-```bash
-scripts/verify
-scripts/smoke
+@vision Read skills/README.md and skills/.agents/skills/systematic-debugging/SKILL.md. Implement the Python VisionMissionAgent and make /api/analyze-photo return the exact contract.
+
+@backend Read skills/README.md, skills/.agents/skills/api-backend/SKILL.md, and skills/.agents/skills/deployment/SKILL.md. Implement FastAPI harness, discovery/reward logic, and video/image report generation.
+
+@integrator Read skills/README.md, skills/.agents/skills/test-first-contract/SKILL.md, and skills/.agents/skills/demo-readiness/SKILL.md. Run contract checks and keep the 90-second demo path green.
+```
+
+## Merge Rule
+
+Each lane may work independently with mocks. Integration starts only after:
+
+```text
+iOS has mock report preview screen
+backend has /api/login-demo and /api/recommend-color
+vision lane has /api/analyze-photo compatible output
+content lane has /api/finish-walk compatible output
+```
+
+## Status Format
+
+Every lane reports:
+
+```text
+Done:
+Blocked:
+Contract changes:
+Demo risk:
+Next 30 minutes:
 ```

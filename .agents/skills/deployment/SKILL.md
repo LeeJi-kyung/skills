@@ -1,51 +1,74 @@
----
-name: deployment
-description: "Deploy readiness for Vercel/Railway envs, smoke checks, rollback."
----
+# ThiSpot ContentGenerationAgent Skill
 
-# Deployment
+Use this skill for the short-form video and image report agent.
 
-## Required Before Deploy
-- `scripts/verify` passes or only skips unscaffolded parts.
-- `scripts/deploy-check` passes.
-- `/health` exists on the backend.
-- Demo seed data or no-data fallback exists.
+## Goal
 
-## Vercel Frontend
-Required env:
-- `NEXT_PUBLIC_API_URL`
-- `NEXT_PUBLIC_SUPABASE_URL` if Supabase is used
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY` if Supabase is used
+Create a shareable reward from character, walk photos, route snapshot/mock route, and summary data.
 
-Check:
-```bash
-cd frontend
-pnpm build
-vercel env ls
-vercel --prod
+## Input
+
+```json
+{
+  "session_id": "session_123",
+  "target_color": "blue",
+  "character_id": "spotter",
+  "distance_m": 1240,
+  "steps": 1843,
+  "duration_sec": 720,
+  "best_match_score": 0.87,
+  "photo_paths": ["uploads/photo_1.jpg"],
+  "badge_title": "Blue Finder"
+}
 ```
 
-## Railway Backend
-Required env:
-- `CORS_ORIGINS`
-- `DATABASE_URL` if DB is used
-- `SUPABASE_URL` if Supabase is used
-- `SUPABASE_SERVICE_KEY` if privileged Supabase access is used
+## Output
 
-Check:
-```bash
-cd backend
-uv run python -c "from main import app; print('backend import ok')"
-railway up
-railway logs
+```json
+{
+  "type": "video",
+  "video_url": "http://localhost:8000/outputs/videos/session_123.mp4",
+  "image_url": "http://localhost:8000/outputs/reports/session_123.jpg",
+  "thumbnail_url": "http://localhost:8000/outputs/reports/session_123_thumb.jpg"
+}
 ```
 
-## Smoke Test
-```bash
-API_URL=https://your-api.example.com FRONTEND_URL=https://your-app.vercel.app scripts/smoke
+## MVP Rendering
+
+Preferred: render a 5-8 second slideshow/video.
+
+```text
+frame 1: ThiSpot + Today's Color + character
+frame 2: best mission photo
+frame 3: map/route mock with character walking
+frame 4: distance / steps / match score
+frame 5: badge + share caption
 ```
 
-## Rollback
-- Vercel: use the previous successful deployment.
-- Railway: revert to the last known good commit and redeploy.
-- If deploy is unstable after 7:15, demo locally with seeded data.
+Fallback: generate one Instagram-story-style image report.
+
+Required text:
+
+```text
+Today's Color
+distance
+steps
+duration
+best match score
+badge
+ThiSpot logo/name
+```
+
+## Static Serving
+
+FastAPI must serve:
+
+```text
+/outputs/videos/{filename}
+/outputs/reports/{filename}
+/assets/character/{filename}
+```
+
+## Demo Requirement
+
+The UI only needs to prove that ContentGenerationAgent produced a shareable artifact. If MP4 export is unstable, ship image report first.

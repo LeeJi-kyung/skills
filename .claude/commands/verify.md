@@ -1,10 +1,9 @@
 # /verify
 
-Run deterministic checks:
+Use before final demo.
 
-```bash
-scripts/verify
+Confirm the app completes:
+
+```text
+character -> recommend color -> start walk -> capture photo -> VisionMissionAgent -> finish walk -> badge -> video/image report
 ```
-
-If checks fail, use `systematic-debugging` and fix only the first root cause.
-

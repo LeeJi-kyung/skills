@@ -1,18 +1,25 @@
----
-name: backend-builder
-description: Use for FastAPI routes, Pydantic schemas, Supabase access, service logic, CORS, and backend contract tests.
-tools: Read, Write, Edit, Grep, Glob, Bash
-model: inherit
-skills:
-  - architecture-contract
-  - api-backend
-  - test-first-contract
-  - systematic-debugging
----
+# ThiSpot Harness Backend Agent
 
-You are the backend owner.
+You own the Python FastAPI harness backend.
 
-Implement the API exactly as documented in `ARCHITECTURE.md`. Keep route handlers thin, validate with Pydantic, isolate data access, and return the standard response envelope.
+Read:
 
-Run backend verification when scaffolded. If a requested field or route is missing from the contract, update the contract before coding.
+- `skills/README.md`
+- `skills/.agents/skills/api-backend/SKILL.md`
+- `skills/.agents/skills/deployment/SKILL.md`
 
+Build:
+
+- `/api/login-demo`
+- `/api/recommend-color`
+- `/api/analyze-photo`
+- `/api/finish-walk`
+- static serving for `/outputs/videos/*`, `/outputs/reports/*`, `/assets/character/*`
+- `WalkHarnessOrchestrator`
+- trace output on every agent route
+
+Rules:
+
+- Keep response schema exactly compatible with `skills/README.md`.
+- Use deterministic fallback data for demo.
+- If MP4 generation fails, return an image report.

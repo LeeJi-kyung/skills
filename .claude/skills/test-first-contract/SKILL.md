@@ -1,42 +1,43 @@
----
-name: test-first-contract
-description: "Contract tests before frontend/backend parallel feature work."
----
+# ThiSpot Contract Test Skill
 
-# Test-First Contract
+Use this skill to keep iOS and backend integration stable.
 
-## Purpose
-Hackathon TDD is contract-first, not exhaustive test-first. Define the shape that lets frontend and backend work in parallel.
+## Backend Checks
 
-## When
-- New API route.
-- New user action.
-- New data model.
-- Bug fix on the demo path.
+Minimum commands:
 
-## Output
-- Contract section in `ARCHITECTURE.md`.
-- One success scenario.
-- One failure scenario.
-- The verification command that proves the slice works.
-
-## Frontend Contract Test
-- API client handles success envelope.
-- API client handles error envelope.
-- UI shows loading and recoverable error state.
-
-## Backend Contract Test
-- Route validates request body.
-- Route returns standard success envelope.
-- Route returns standard error envelope.
-
-## Do Not
-- Do not create broad tests for unbuilt features.
-- Do not mock an API shape that is not in `ARCHITECTURE.md`.
-- Do not block the demo for non-critical coverage.
-
-## Verify
-```bash
-scripts/verify
-scripts/smoke
+```text
+curl http://localhost:8000/health
+curl -X POST http://localhost:8000/api/login-demo -H "Content-Type: application/json" -d '{"nickname":"Demo"}'
+curl -X POST http://localhost:8000/api/recommend-color -H "Content-Type: application/json" -d '{"user_id":"demo_user","previous_colors":["red","green","blue"]}'
 ```
+
+For `/api/analyze-photo`, use a known blue fixture image.
+
+Expected fields:
+
+```text
+vision_result.detected_color
+vision_result.match_score
+vision_result.is_matched
+vision_result.object_label
+discovery_result.message
+agent_trace[0].agent
+```
+
+For `/api/finish-walk`, expected fields:
+
+```text
+badge.title
+summary.subtitle
+report.video_url or report.image_url
+agent_trace
+```
+
+## iOS Checks
+
+- App launches without backend.
+- Mock flow reaches report preview screen.
+- Backend flow reaches report preview screen.
+- Captured photo can be uploaded.
+- Failed video response still shows image report/fallback card.

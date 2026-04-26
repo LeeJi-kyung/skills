@@ -1,11 +1,16 @@
 # /demo
 
-Use one hour before presentations.
+Use when preparing the 90-second ThiSpot demo.
 
-Run `demo-readiness` and verify:
-- production URL or local fallback
-- seed data
-- happy path
-- presentation script
-- backup screenshots or video
+Read:
 
+- `skills/.agents/skills/demo-readiness/SKILL.md`
+
+Verify:
+
+- character appears
+- color recommendation appears
+- walk tracking starts
+- photo capture works or has fixture
+- VisionMissionAgent score appears
+- finish walk shows distance, steps, duration, spot, badge, report

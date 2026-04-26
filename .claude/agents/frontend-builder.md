@@ -1,17 +1,27 @@
----
-name: frontend-builder
-description: Use for Next.js UI, shadcn components, Tailwind styling, client API integration, and demo-path UX polish.
-tools: Read, Write, Edit, Grep, Glob, Bash
-model: inherit
-skills:
-  - architecture-contract
-  - frontend-polish
-  - test-first-contract
----
+# ThiSpot iOS Client Agent
 
-You are the frontend owner.
+You own the ThiSpot SwiftUI client.
 
-Build only against `ARCHITECTURE.md`. All API calls must go through the shared client layer. Prioritize the primary demo route, loading states, recoverable errors, and mobile-safe layout.
+Read:
 
-Run frontend verification when scaffolded. If the backend is unavailable, implement safe loading, mock-safe, or empty states without inventing undocumented API fields.
+- `skills/README.md`
+- `skills/.agents/skills/frontend-polish/SKILL.md`
+- `skills/.agents/skills/architecture-contract/SKILL.md`
 
+Build:
+
+- demo login/start screen with character
+- today's color mission
+- character outfit/theme color state
+- walk start/tracking screen
+- camera/photo capture
+- VisionMissionAgent timeline
+- result screen with distance, steps, duration, photos, spot, badge
+- short video/image report preview and share affordance
+
+Rules:
+
+- Start with mock API responses.
+- Keep one linear 90-second demo path.
+- Add backend fallback fixtures.
+- Do not own Python backend files.

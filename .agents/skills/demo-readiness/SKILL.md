@@ -1,37 +1,39 @@
----
-name: demo-readiness
-description: "Final-hour demo prep: flow, seed data, fallback materials, risk burn-down."
----
+# ThiSpot Demo Readiness Skill
 
-# Demo Readiness
+Use this skill for the final 90-second demo path.
 
-## Output
-- 60-second product story.
-- 3-minute click script.
-- Seed data checklist.
-- Production URL and local fallback.
-- Known risks and recovery line.
+## 30-Second Problem
 
-## Demo Script
-1. State the user and pain.
-2. Show the input or trigger.
-3. Show the AI/product result.
-4. Show business value.
-5. Mention what is real: deployed app, live API, real data, or controlled demo data.
+Existing walking apps tell users how far they walked, but that is not why most people keep walking. Solo walking is boring, and there is no immediate reward worth sharing. ThiSpot adds a daily color mission, AI photo proof, and character-based reward content so walking becomes something users want to repeat.
 
-## Readiness Checklist
-- Happy path works twice in a row.
-- Seed data is present.
-- Broken non-demo surfaces are hidden.
-- Network fallback exists.
-- Presenter knows what to do if the API is slow.
+## 90-Second Script
 
-## Do Not
-- Do not add new features in the final hour.
-- Do not depend on live third-party data without fallback.
-- Do not show admin/debug screens to judges.
-
-## Verify
-```bash
-scripts/smoke
+```text
+1. Open ThiSpot: character appears.
+2. Today's color mission is Blue.
+3. Character outfit changes to blue.
+4. Tap Start Walk: GPS/steps/timer screen begins.
+5. Capture a blue sky photo inside the app.
+6. VisionMissionAgent shows "Blue sky detected - 87% match".
+7. End walk: result shows 1.24km, 1,843 steps, 12m, 2 photos.
+8. Discovery message appears: "New Blue Spot discovered."
+9. RewardAgent awards "Blue Finder".
+10. ContentGenerationAgent creates short video or image report.
 ```
+
+## Required Backup Assets
+
+- one blue demo photo
+- one character asset
+- one pre-rendered report image
+- one pre-rendered video if possible
+- fixed backend fixture response
+- screen recording fallback
+
+## Kill Criteria
+
+If MP4 generation takes more than 20 minutes to stabilize, ship image report. If GPS/steps are unstable, use demo fallback values while keeping the tracking UI.
+
+## Judge-Facing Claim
+
+ThiSpot is not just a walking tracker. It turns walking into a color mission, verifies real-world discoveries with AI, and converts the workout into a shareable character-based reward.
