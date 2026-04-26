@@ -1,3 +1,8 @@
+---
+name: test-first-contract
+description: "ThiSpot contract checks for backend routes, iOS integration, and demo fixtures."
+---
+
 # ThiSpot Contract Test Skill
 
 Use this skill to keep iOS and backend integration stable.

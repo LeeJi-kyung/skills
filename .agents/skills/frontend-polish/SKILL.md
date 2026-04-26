@@ -1,3 +1,8 @@
+---
+name: frontend-polish
+description: "ThiSpot SwiftUI iOS client flow, character UI, walk tracking, camera, and result report."
+---
+
 # ThiSpot iOS Client Skill
 
 Use this skill for the SwiftUI iOS app.

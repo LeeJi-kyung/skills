@@ -1,3 +1,8 @@
+---
+name: architecture-contract
+description: "ThiSpot iOS/backend API contract, schemas, routes, and integration rules."
+---
+
 # ThiSpot Architecture Contract Skill
 
 Use this skill before implementation and during integration.

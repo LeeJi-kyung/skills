@@ -1,3 +1,8 @@
+---
+name: project-intake
+description: "ThiSpot MVP scope, product positioning, and demo boundaries."
+---
+
 # ThiSpot Product Intake
 
 Use this skill when defining or rechecking the MVP scope.

@@ -1,3 +1,8 @@
+---
+name: code-review
+description: "ThiSpot integration review checklist focused on demo-breaking bugs and contract mismatches."
+---
+
 # ThiSpot Integration Review Skill
 
 Use this skill before merging work from cmux lanes.

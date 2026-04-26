@@ -1,3 +1,8 @@
+---
+name: deployment
+description: "ThiSpot ContentGenerationAgent for short-form video, image report, and static output serving."
+---
+
 # ThiSpot ContentGenerationAgent Skill
 
 Use this skill for the short-form video and image report agent.

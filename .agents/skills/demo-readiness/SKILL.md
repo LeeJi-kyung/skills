@@ -1,3 +1,8 @@
+---
+name: demo-readiness
+description: "ThiSpot 90-second demo script, backup assets, and judge-facing story."
+---
+
 # ThiSpot Demo Readiness Skill
 
 Use this skill for the final 90-second demo path.

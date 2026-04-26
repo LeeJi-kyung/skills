@@ -1,3 +1,8 @@
+---
+name: git-workflow
+description: "ThiSpot cmux multi-agent workflow, lane ownership, prompts, and merge rules."
+---
+
 # ThiSpot cmux Multi-Agent Workflow Skill
 
 Use this skill to coordinate parallel work.

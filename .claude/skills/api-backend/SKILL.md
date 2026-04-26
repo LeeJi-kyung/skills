@@ -1,3 +1,8 @@
+---
+name: api-backend
+description: "ThiSpot Python FastAPI harness backend, routes, orchestrator, and agent wiring."
+---
+
 # ThiSpot Python Harness Backend Skill
 
 Use this skill for the FastAPI backend and shared agent harness.
